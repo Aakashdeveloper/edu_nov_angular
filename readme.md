@@ -1,6 +1,6 @@
-[Live Link](http://18.220.160.116:3000/)
 
-1) Open a command prompt in the project's root directory (APM)
+
+1) Open a command prompt in the project's root directory 
 
 2) Type: `npm install`
     This installs the dependencies as defined in the package.json file.
