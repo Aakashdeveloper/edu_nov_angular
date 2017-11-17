@@ -1,28 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
-import {AppComponent} from './app.component';
-import { CarComponent } from "./car.component";
-import { ProductListComponent } from "./products/product.component";
-import { ProductFilterPipe } from "./products/product-filter.pipe";
-import { StarComponent } from "./shared/star.component";
-import { ProductService } from "./products/product.service";
+import { AppComponent} from './app.component';
+import { HomeComponent } from "./home/home.component";
+import { Notfound } from "./shared/notFound.component";
+import { ProductModule } from "./products/product.module";
+import { orderModule } from "./orders/order.module";
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule
+    ProductModule,
+    orderModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot([
+      {path:'home',component:HomeComponent},
+      {path:'',redirectTo:'home',pathMatch:'full'},
+      {path:'**',component:Notfound},
+    ])
   ],
   declarations: [
     AppComponent,
-    CarComponent,
-    ProductListComponent,
-    ProductFilterPipe,
-    StarComponent
+    HomeComponent,
+    Notfound
   ],
-  bootstrap: [ AppComponent ],
-  providers:[ProductService]
+  bootstrap: [ AppComponent ]
 })
-
 export class AppModule { }
